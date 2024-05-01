@@ -2,11 +2,8 @@ import hashlib
 import socket
 import time
 import uuid
-
 import requests
 import validators
-from mydictonary import get_expanded_url, add_url, dataStruct_dict, get_all_items
-from lock_module import lock
 from dbClient import urlMappingCollection
 
 def timer_func():
@@ -51,16 +48,10 @@ def main():
     unique_id = hashlib.sha256(combinedStr.encode()).hexdigest()
     print("This is the unique identifier = ", unique_id)  #generates a long string that is secure and less prone to collisons but is still pretty long
 
-    lock.acquire()
-    try:
-        if unique_id:
-            # add_url(unique_id, inputUrl)
-            urlMappingCollection.insert_one({"shortId":unique_id, "originalUrl":inputUrl })
-
-        else:
-            print("Some issue occured when generating uuid")
-    finally:
-        lock.release()
+    if unique_id:
+        urlMappingCollection.insert_one({"shortId":unique_id, "originalUrl":inputUrl })
+    else:
+        print("Some issue occured when generating uuid")
     print("mongodb after inserting= ", urlMappingCollection.find())
 
     # adding base URL to the shortended UUID
