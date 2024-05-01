@@ -41,7 +41,6 @@ def main():
         urlMappingCollection.insert_one({"shortId":unique_id, "originalUrl":inputUrl })
     else:
         print("Some issue occured when generating uuid")
-    print("mongodb after inserting= ", urlMappingCollection.find())
 
     # adding base URL to the shortended UUID
     baseUrl = 'http://127.0.0.1:5000/'
