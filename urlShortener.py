@@ -6,17 +6,6 @@ import requests
 import validators
 from dbClient import urlMappingCollection
 
-def timer_func():
-    print("********************************************************************* timer started")
-    duration = 5*60
-    start_time = time.time()
-    elapsed_time = 0
-    while elapsed_time < duration:
-        time.sleep(1)
-        elapsed_time = time.time() - start_time
-        remaining_time = max(0, duration - elapsed_time)
-        print(f"Time remaining: {int(remaining_time)} seconds")
-    print("timer finished, exiting script")
 def main():
     inputUrl = 'https://www.google.com/search?sca_esv=0bc39af9d1d15b37&rlz=1C1VDKB_enUS1068US1068&sxsrf=ACQVn0_j64acu_lP21MJanRZg_aefmILlQ:1713106911584&q=cats&uds=AMwkrPuurAXqxNouqA_OXBEs5-yptF3T1Qw8YTSCYyR_ozQame5VYMs4cD6KcX2qUDLB9aMvPjYDcAfQru9GEaEMAy-avc9u6nGnxU0gz9-Hk1mt-esbODLJWl05z2zZy3wfugbnbyaFzoNvR1YWi42Lt7BMPnfpKM-Mc6rWHOJowpk7WV38xIg4iRcKZ65ZYN7xwQqInlZI4gZl-ruw3O2O4W6pYsW00Hj_aEBowgFwUIN2ed1sPaOW2HfFQq_dAtX3NNcK309wYpkOSbzwKQpjtVMTy3hwT4YVnq_Q97kepdx58ebyqmM&udm=2&prmd=ivsnmbtz&sa=X&ved=2ahUKEwjWjbXH_MGFAxWNlIkEHR-sCJsQtKgLegQIERAB&biw=1422&bih=650&dpr=1.35#vhid=zWdzdPdo-A-wdM&vssid=mosaic'
 
@@ -59,7 +48,6 @@ def main():
     shortenedUrl = baseUrl + unique_id
     print(shortenedUrl)
 
-    timer_func()
 
 if __name__ == "__main__":
     main()
